@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
 import { Body } from "./container/Body";
+import { Header } from "./container/Header";
 function App() {
   const [theme, setTheme] = useState(false);
   const handleTheme = () => {
@@ -12,6 +13,7 @@ function App() {
       const headroom = document.getElementById("");
     };
   });
+  
   useEffect(() => {
     const scrollUp = () => {
       const btnScrollTop =
@@ -31,62 +33,12 @@ function App() {
     };
   }, []);
   return (
+    
     <div
       className={theme ? "contain dark" : "contain light"}
       id="top"
     >
-      <div className="header center">
-        <h3>
-          <a
-            href="https://rajshekhar26.github.io/cleanfolio-minimal"
-            className="link"
-          >
-            100SeongJun's Portfolio
-          </a>
-        </h3>
-
-        <nav className="nav center">
-          <ul className="nav__list center">
-            <li className="nav__list-item">
-              <a
-                className="link link--nav"
-                href="#projects"
-              >
-                Projects
-              </a>
-            </li>
-            <li className="nav__list-item">
-              <a className="link link--nav" href="#skills">
-                Skills
-              </a>
-            </li>
-            <li className="nav__list-item">
-              <a className="link link--nav" href="#contact">
-                Contact
-              </a>
-            </li>
-          </ul>
-
-          <button onClick={handleTheme}>
-            {theme ? (
-              <i className="fa-solid fa-sun-bright" />
-            ) : (
-              <i className="fa-solid fa-moon"></i>
-            )}
-          </button>
-
-          <button
-            type="button"
-            aria-label="toggle navigation"
-            className="btn btn--icon nav__hamburger"
-          >
-            <i
-              aria-hidden="true"
-              className="fas fa-bars"
-            ></i>
-          </button>
-        </nav>
-      </div>
+      <Header handleTheme={handleTheme} theme={theme}/>
 
       <Body />
 
