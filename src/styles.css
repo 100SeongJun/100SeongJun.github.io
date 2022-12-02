@@ -9,26 +9,24 @@
   outline: 0;
   background-color: inherit;
   color: inherit;
-  font-family: inherit;
   font-size: inherit;
+  font-family:"Poppins",sans-serif;
   box-shadow: none;
   box-sizing: border-box;
 }
 .contain {
-  padding-top: 128px;
-  font-family: "Poppins", sans-serif;
+  padding-top: 130px;
   line-height: 1.5;
   color: var(--clr-fg);
-  background-color: var(--clr-bg);
-}
+  background-color: var(--clr-bg);}
 
 .light {
   --clr-bg: #fcfcfc;
   --clr-bg-alt: #fff;
-  /* --clr-fg: #555; */
-  /* --clr-fg-alt: #444; */
+  --clr-fg: #333;
+  --clr-fg-alt: #444;
   --clr-primary: #2978b5;
-  --shadow: rgba(64, 64, 99, 0.2) 0px 7px 29px 0px;
+  --shadow: rgba(20, 16, 16, 0.247) 0px 7px 29px 0px;
 }
 
 .dark {
@@ -37,10 +35,13 @@
   --clr-fg: #bdbddd;
   --clr-fg-alt: #cdcdff;
   --clr-primary: #90a0d9;
-  --shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  --shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px;
 }
 
+.dark .header{
+  background-color: rgb(22, 32, 70);
+
+}
 ::-moz-selection {
   background: var(--clr-primary);
   color: var(--clr-bg);
@@ -126,6 +127,7 @@ button {
 .body {
   width: 95%;
   margin: 0px auto;
+  
 }
 .link--nav {
   color: var(--clr-fg);
@@ -218,17 +220,12 @@ button {
   z-index: 20;
   margin: 0px;
   top: 0px;
+  /* min-width: 450px; */
   justify-content: space-around;
+  box-shadow:rgba( 0,0, 0, 0.15) 1px 1px 4px 0px;
 }
-
-main {
-  max-width: 1100px;
-  width: 95%;
-  padding: 0 auto;
-}
-
 .section {
-  padding-top: 120px;
+  padding-top: 130px;
 }
 
 .section__title {
@@ -385,13 +382,14 @@ main {
     left: 0;
     top: 5em;
     background-color: var(--clr-bg);
-    width: 0;
+    width: 0px;
     overflow: hidden;
     transition: width 0.2s ease-in-out;
   }
 
   .display-nav-list {
     width: 100%;
+   
   }
 
   .nav__list-item {
