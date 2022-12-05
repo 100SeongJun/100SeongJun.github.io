@@ -1,7 +1,7 @@
 // import { useState } from "react"
 
-export const Header =({handleTheme,theme} )=>{
-    return (
+export const Header = ({ handleTheme, theme }) => {
+  return (
     <div className="header center">
       <h3>
         <a
@@ -15,10 +15,7 @@ export const Header =({handleTheme,theme} )=>{
       <nav className="nav center">
         <ul className="nav__list center">
           <li className="nav__list-item">
-            <a
-              className="link link--nav"
-              href="#projects"
-            >
+            <a className="link link--nav" href="#projects">
               Projects
             </a>
           </li>
@@ -47,13 +44,9 @@ export const Header =({handleTheme,theme} )=>{
           aria-label="toggle navigation"
           className="btn btn--icon nav__hamburger"
         >
-          <i
-            aria-hidden="true"
-            className="fas fa-bars"
-          />
+          <i aria-hidden="true" className="fas fa-bars" />
         </button>
       </nav>
-      
     </div>
-    )
-}
+  );
+};
