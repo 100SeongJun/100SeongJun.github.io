@@ -16,10 +16,10 @@
 }
 .contain {
   padding-top: 130px;
+  min-width: 300px;
   line-height: 1.5;
   color: var(--clr-fg);
   background-color: var(--clr-bg);}
-
 .light {
   --clr-bg: #fcfcfc;
   --clr-bg-alt: #fff;
@@ -101,7 +101,6 @@ button {
 
 .link {
   color: var(--clr-primary);
-  padding: 0 0 0.3em 0;
   position: relative;
 }
 
@@ -137,7 +136,7 @@ button {
 
 .link--icon {
   color: var(--clr-fg);
-  font-size: 1.2rem;
+  font-size: 1.7rem;
 }
 
 .btn {
