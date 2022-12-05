@@ -10,16 +10,17 @@
   background-color: inherit;
   color: inherit;
   font-size: inherit;
-  font-family:"Poppins",sans-serif;
+  font-family: 'Poppins', sans-serif;
   box-shadow: none;
   box-sizing: border-box;
 }
 .contain {
   padding-top: 130px;
-  min-width: 300px;
+  min-width: 600px;
   line-height: 1.5;
   color: var(--clr-fg);
-  background-color: var(--clr-bg);}
+  background-color: var(--clr-bg);
+}
 .light {
   --clr-bg: #fcfcfc;
   --clr-bg-alt: #fff;
@@ -32,15 +33,14 @@
 .dark {
   --clr-bg: #23283e;
   --clr-bg-alt: #2a2f4c;
-  --clr-fg: #bdbddd;
-  --clr-fg-alt: #cdcdff;
-  --clr-primary: #90a0d9;
+  --clr-fg: #ceceda;
+  --clr-fg-alt: #bfbffc;
+  --clr-primary: #dfff6d;
   --shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px;
 }
 
-.dark .header{
+.dark .header {
   background-color: rgb(22, 32, 70);
-
 }
 ::-moz-selection {
   background: var(--clr-primary);
@@ -62,7 +62,7 @@ h4 {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 h2 {
@@ -89,12 +89,6 @@ button {
   cursor: pointer;
 }
 
-@media (max-width: 900px) {
-  h1 {
-    font-size: 2.6rem;
-  }
-}
-
 /*===================
   buttons and links
 ===================*/
@@ -109,8 +103,8 @@ button {
 }
 
 .link::before {
-  content: "";
-  display: inline;
+  content: '';
+  /* display: inline; */
   width: 0%;
   height: 0.2em;
   position: absolute;
@@ -126,7 +120,6 @@ button {
 .body {
   width: 95%;
   margin: 0px auto;
-  
 }
 .link--nav {
   color: var(--clr-fg);
@@ -136,7 +129,7 @@ button {
 
 .link--icon {
   color: var(--clr-fg);
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .btn {
@@ -162,7 +155,7 @@ button {
 }
 
 .btn--outline:before {
-  content: "";
+  content: '';
   position: absolute;
   background-color: var(--clr-primary);
   right: 100%;
@@ -221,7 +214,13 @@ button {
   top: 0px;
   /* min-width: 450px; */
   justify-content: space-around;
-  box-shadow:rgba( 0,0, 0, 0.15) 1px 1px 4px 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 4px 0px;
+  transition: transform 1s;
+  transform: initial;
+}
+
+.header.scrollDown {
+  transform: translate(0, -160px);
 }
 .section {
   padding-top: 130px;
@@ -250,12 +249,29 @@ button {
 }
 
 .about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+}
+
+.about__img {
+  background-image: url('https://avatars.githubusercontent.com/u/94966290?v=4');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0px;
+  margin: 2rem;
+  width: 26rem;
+  height: 26rem;
+}
+.about__text {
   flex-direction: column;
-  margin-top: 3em;
 }
 
 .about__name {
   color: var(--clr-primary);
+  font-style: italic;
 }
 
 .about__role {
@@ -265,6 +281,7 @@ button {
 .about__desc {
   font-size: 1rem;
   max-width: 600px;
+  text-align: justify;
 }
 
 .about__desc,
@@ -284,10 +301,7 @@ button {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(18em, 1fr)
-  );
+  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
   grid-gap: 2em;
 }
 
@@ -364,6 +378,22 @@ button {
   transition: transform 0.2s ease-in-out;
 }
 
+@media (max-width: 1160px) {
+  .about {
+    flex-direction: column;
+  }
+  h1 {
+    font-size: 2.4rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  .about.center {
+    display: flex;
+    align-items: center;
+  }
+}
+
 @media (max-width: 600px) {
   .header {
     height: 6em;
@@ -388,7 +418,6 @@ button {
 
   .display-nav-list {
     width: 100%;
-   
   }
 
   .nav__list-item {
@@ -401,7 +430,6 @@ button {
   }
 
   .about {
-    align-items: flex-start;
     margin-top: 2em;
   }
 
@@ -412,5 +440,9 @@ button {
 
   .scroll-container {
     display: none;
+  }
+  h1,
+  h2 {
+    font-size: 1.5rem;
   }
 }
