@@ -1,41 +1,74 @@
 setTimeout(() => {
   //Scroll TopBtn
-  const btnHamburger = document.getElementsByClassName('fa-bars')[0];
+  const btnHamburger = document.getElementsByClassName("fa-bars")[0];
+  const navUl = document.querySelector(".nav__list");
 
   const displayList = () => {
-    const navUl = document.querySelector('.nav__list');
-    if (btnHamburger.classList.contains('fa-bars')) {
-      btnHamburger.classList.remove('fa-bars');
-      btnHamburger.classList.add('fa-times');
-      navUl.classList.add('display-nav-list');
+    if (btnHamburger.classList.contains("fa-bars")) {
+      btnHamburger.classList.remove("fa-bars");
+      btnHamburger.classList.add("fa-times");
+      navUl.classList.add("display-nav-list");
+      navUl.classList.add("box-shadow");
     } else {
-      btnHamburger.classList.remove('fa-times');
-      btnHamburger.classList.add('fa-bars');
-      navUl.classList.remove('display-nav-list');
+      btnHamburger.classList.remove("fa-times");
+      btnHamburger.classList.add("fa-bars");
+      navUl.classList.remove("display-nav-list");
+      navUl.classList.remove("box-shadow");
     }
   };
-  btnHamburger.addEventListener('click', displayList);
+  btnHamburger.addEventListener("click", displayList);
 
-  // ScrollHeader
-  const header = document.getElementsByClassName('header')[0];
+  const header = document.getElementsByClassName("header")[0];
   const headerScroll = (direction) => {
-    if (direction === 'up') {
-      header.classList.remove('scrollDown');
-    } else if (direction === 'down') {
-      header.classList.add('scrollDown');
+    if (direction === "up") {
+      header.classList.remove("scroll-down");
+    } else if (direction === "down") {
+      header.classList.add("scroll-down");
+      navUl.classList.remove("display-nav-list");
+      btnHamburger.classList.remove("fa-times");
+      btnHamburger.classList.add("fa-bars");
     }
   };
   var prevScrollTop = 0;
 
   const headerScrollFnc = () => {
     var nextScrollTop = window.scrollY || 0;
+    // if (nextScrollTop > 100) {
     if (nextScrollTop > prevScrollTop) {
-      headerScroll('down');
+      headerScroll("down");
     } else if (nextScrollTop < prevScrollTop) {
-      headerScroll('up');
+      headerScroll("up");
     }
     prevScrollTop = nextScrollTop;
+    // }
   };
 
-  document.addEventListener('scroll', () => headerScrollFnc());
-}, 100);
+  document.addEventListener("scroll", () => headerScrollFnc());
+  window.onresize = function (event) {
+    if (window.innerWidth > 600) {
+      navUl.classList.remove("box-shadow");
+    } else {
+      navUl.classList.add("box-shadow");
+    }
+  };
+
+  // Theme 변경
+  if (!window.localStorage.getItem("theme")) {
+    window.localStorage.setItem("theme", "light");
+  }
+
+  // Scroll Top Btn 동작
+  const scrollUp = () => {
+    const btnScrollTop = document.querySelector(".scroll-top");
+
+    if (
+      document.getElementById("top") > 500 ||
+      document.documentElement.scrollTop > 500
+    ) {
+      btnScrollTop.style.display = "block";
+    } else {
+      btnScrollTop.style.display = "none";
+    }
+  };
+  document.addEventListener("scroll", scrollUp);
+}, 300);
