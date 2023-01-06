@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 setTimeout(() => {
   //Scroll TopBtn
   const btnHamburger = document.getElementsByClassName("fa-bars")[0];
@@ -53,22 +55,27 @@ setTimeout(() => {
   };
 
   // Theme 변경
-  if (!window.localStorage.getItem("theme")) {
+  useEffect(() => {
     window.localStorage.setItem("theme", "light");
-  }
+  }, []);
 
   // Scroll Top Btn 동작
-  const scrollUp = () => {
-    const btnScrollTop = document.querySelector(".scroll-top");
+  useEffect(() => {
+    const scrollUp = () => {
+      const btnScrollTop = document.querySelector(".scroll-top");
 
-    if (
-      document.getElementById("top") > 500 ||
-      document.documentElement.scrollTop > 500
-    ) {
-      btnScrollTop.style.display = "block";
-    } else {
-      btnScrollTop.style.display = "none";
-    }
-  };
-  document.addEventListener("scroll", scrollUp);
+      if (
+        document.getElementById("top") > 500 ||
+        document.documentElement.scrollTop > 500
+      ) {
+        btnScrollTop.style.display = "block";
+      } else {
+        btnScrollTop.style.display = "none";
+      }
+    };
+    document.addEventListener("scrolltop", scrollUp);
+    return () => {
+      document.removeEventListener("scrolltop", scrollUp);
+    };
+  }, []);
 }, 300);
