@@ -1,11 +1,14 @@
 export const Footer = () => {
   return (
     <footer className="footer">
+      <hr className="hr" />
       <a
-        href="https://github.com/rajshekhar26/cleanfolio-minimal"
+        href="https://github.com/100Seongjun"
+        target="_blank"
+        rel="noopener noreferrer"
         className="link footer__link"
       >
-        Created By Raj Shekhar
+        <span>100SeongJun's Portfolio</span>
       </a>
     </footer>
   );
