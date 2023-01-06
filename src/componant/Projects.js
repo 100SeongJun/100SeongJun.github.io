@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import Github from "../jsonData/Github";
+import ProjectData from "../jsonData/ProjectData";
 
 export const Projects = () => {
   return (
     <section id="projects" className="section projects">
       <h2 className="section__title">Projects</h2>
       <div className="projects__grid">
-        {Github.map((data, index) => {
+        {ProjectData.map((data, index) => {
           return (
             <div key={index} className="project">
               <h2 className="project__title">{data.Title}</h2>
