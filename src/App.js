@@ -1,43 +1,30 @@
-import { useEffect, useState } from 'react';
-import './styles.css';
-import { Body, ScrollTop, Footer, Header } from './container';
+import { useState } from "react";
+import "./styles.css";
+import { Body, ScrollTop, Footer, Header } from "./container";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { DetailProject } from "./container/DetailProject";
 function App() {
   const [theme, setTheme] = useState(false);
-  const handleTheme = () => {
+  const changeTheme = () => {
     setTheme(!theme);
   };
-
-  useEffect(() => {
-    const scrollhead = () => {
-      const headroom = document.getElementById('');
-    };
-  }, []);
-
-  useEffect(() => {
-    const scrollUp = () => {
-      const btnScrollTop = document.querySelector('.scroll-top');
-      if (
-        document.getElementById('top') > 500 ||
-        document.documentElement.scrollTop > 500
-      ) {
-        btnScrollTop.style.display = 'block';
-      } else {
-        btnScrollTop.style.display = 'none';
-      }
-    };
-    document.addEventListener('scroll', scrollUp);
-    return () => {
-      document.removeEventListener('scroll', scrollUp);
-    };
-  }, []);
-
   return (
-    <div className={theme ? 'contain dark' : 'contain light'} id="top">
-      <Header handleTheme={handleTheme} theme={theme} />
-      <Body />
-      <Footer />
-      <ScrollTop />
-    </div>
+    <BrowserRouter>
+      <Helmet>
+        <script src="./script.js" />
+      </Helmet>
+      <div className={`contain ${window.localStorage.getItem("theme")}`}>
+        <Routes>
+          <Route path="/" element={<Header changeTheme={changeTheme} />}>
+            <Route path="/" element={<Body />} />
+            <Route path="/project" element={<DetailProject />} />
+          </Route>
+        </Routes>
+        <Footer />
+        <ScrollTop />
+      </div>
+    </BrowserRouter>
   );
 }
 
