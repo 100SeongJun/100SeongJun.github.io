@@ -1,47 +1,53 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-import * as api from '../api';
+import { Link } from "react-router-dom";
+import Github from "../jsonData/Github";
 
 export const Projects = () => {
-  const [repos, setRepos] = useState([]);
-  useEffect(() => {
-    api.githubApi(setRepos);
-  }, []);
-
   return (
     <section id="projects" className="section projects">
       <h2 className="section__title">Projects</h2>
       <div className="projects__grid">
-        {repos.length !== 0 &&
-          repos.map((data, index) => {
-            console.log(data);
-            return (
-              <div key={index}>
-                <div className="project">
-                  <h3>{data.name}</h3>
-                  <p className="project__description">
-                    Ipsum accusamus ea excepturi aliquid eligendi amet.
-                    Explicabo sapiente debitis labore sed ipsam Mollitia
-                    repellat illum quod unde beatae Quis
-                  </p>
-                  <ul className="project__stack">
-                    <li className="project__stack-item">SASS</li>
-                    <li className="project__stack-item">TypeScript</li>
-                    <li className="project__stack-item">React</li>
-                  </ul>
-
-                  <a
-                    href={`${data.html_url}`}
-                    aria-label="source code"
-                    className="link link--icon"
-                  >
-                    <i aria-hidden="true" className="fab fa-github"></i>
-                  </a>
-                </div>
+        {Github.map((data, index) => {
+          return (
+            <div key={index} className="project">
+              <h2 className="project__title">{data.Title}</h2>
+              <h3 className="project__subject">{data.Subject}</h3>
+              <p className="project__description">{data.Contents}</p>
+              <ul className="project__stack">
+                {data.Skills.map((skill, idx) => {
+                  return (
+                    <li className="project__stack-item" key={idx}>
+                      {skill}
+                    </li>
+                  );
+                })}
+              </ul>
+              <div
+                className="project_img"
+                style={{
+                  backgroundImage: `url(${data.Image})`,
+                }}
+              />
+              <div className="margin-top space--around">
+                <a
+                  href={`${data.URI}`}
+                  aria-label="source code"
+                  className="link link--icon"
+                >
+                  <i aria-hidden="true" className="fab fa-github"></i>
+                </a>
+                <Link to={`/project#${index}`}>
+                  <span className="link link--icon">
+                    <iconify-icon icon="material-symbols:chevron-right-rounded" />
+                  </span>
+                </Link>
               </div>
-            );
-          })}
+            </div>
+          );
+        })}
       </div>
+      <Link to={"/project"}>
+        <button className="btn btn--outline project_more_btn">{`<더보기>`}</button>
+      </Link>
     </section>
   );
 };
