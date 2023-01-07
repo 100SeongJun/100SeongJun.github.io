@@ -55,6 +55,7 @@ setTimeout(() => {
   // Theme 변경
   if (!window.localStorage.getItem("theme")) {
     window.localStorage.setItem("theme", "light");
+    window.location.reload(true);
   }
 
   // Scroll Top Btn 동작
@@ -71,4 +72,4 @@ setTimeout(() => {
     }
   };
   document.addEventListener("scroll", scrollUp);
-}, 300);
+}, 100);
